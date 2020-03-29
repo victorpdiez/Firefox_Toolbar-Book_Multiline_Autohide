@@ -1,6 +1,21 @@
 /************************************************************************************************/
 /* Thanks to                                                                                    */
-/* Github: https://github.com/aris-t2/customcssforfx                                            */
+/*
+	Github: 
+	
+	https://github.com/aris-t2/customcssforfx                                            
+
+	especially for
+
+	https://github.com/Aris-t2/CustomCSSforFx/tree/master/classic/css/toolbars
+
+	MULTIPLE ROWS:
+	https://github.com/Aris-t2/CustomCSSforFx/blob/master/classic/css/toolbars/bookmarks_toolbar_multiple_lines_fx74.css
+
+	AUTO HIDE
+	https://github.com/Aris-t2/CustomCSSforFx/blob/master/classic/css/toolbars/addonbar_fullscreen_autohide.css
+
+*/
 /************************************************************************************************/
 
 /*************************************************************************************************
@@ -13,3 +28,239 @@ IMPORTANT:
 
 *************************************************************************************************/
 
+
+/*
+https://github.com/kakakikikeke/compact-toolbar/blob/master/main.js
+*/
+
+
+:root {
+/********** ioxoi ************  --bookmark_items_height: 22px; /* <- bookmark items - line height */
+  --bookmark_items_height: 36px; /* <- bookmark items - line height */
+/********** ioxoi *************   --bookmark_items_lines: 3; /* <- maximum amount of lines */ */
+  --bookmark_items_lines: 8; /* <- maximum amount of lines */
+}
+
+
+
+#PersonalToolbar {
+/********** ioxoi ************ allow auto hide
+  min-height: var(--bookmark_items_height) !important;
+  max-height: calc(var(--bookmark_items_height)*(var(--bookmark_items_lines))) !important;
+*/
+  min-height: 0px !important;
+  max-height: 0px !important;
+}
+
+/********** ioxoi ************ allow auto hide */
+#PersonalToolbar:hover {
+  min-height: var(--bookmark_items_height) !important;
+  max-height: calc(var(--bookmark_items_height)*(var(--bookmark_items_lines))) !important;
+}
+
+
+#personal-bookmarks,
+#PlacesToolbar > hbox {
+  display: block;
+}
+
+#PlacesToolbarItems {
+  display: flex;
+  flex-wrap: wrap;
+  overflow-x: visible;
+  overflow-y: auto;
+}
+
+#PlacesToolbarItems > .scrollbox-innerbox {
+  display: flex;
+  flex-wrap: wrap; 
+  overflow-x: hidden !important;
+  overflow-y: visible !important;
+/********** ioxoi ************ allow auto hide
+  max-height: calc(var(--bookmark_items_height)*(var(--bookmark_items_lines))) !important
+*/
+}
+
+/********** ioxoi ************ allow auto hide */
+#PlacesToolbarItems:hover > .scrollbox-innerbox {
+  max-height: calc(var(--bookmark_items_height)*(var(--bookmark_items_lines))) !important
+}
+
+#personal-bookmarks #PlacesToolbar {
+  display: block;
+  min-height: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+/********** ioxoi ************ allow auto hide
+  max-height: calc( var(--bookmark_items_lines) * var(--bookmark_items_height) );
+*/
+}
+
+/********** ioxoi ************ allow auto hide */
+#personal-bookmarks:hover #PlacesToolbar {
+  max-height: calc( var(--bookmark_items_lines) * var(--bookmark_items_height) );
+}
+
+
+#personal-bookmarks #PlacesToolbar > .bookmark-item{
+  visibility: visible !important;
+}
+
+#personal-bookmarks #PlacesToolbar .chevron{
+  visibility: collapse;
+}
+#personal-bookmarks #PlacesToolbar > hbox > hbox{
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
+
+#personal-bookmarks #PlacesToolbar #PlacesToolbarDropIndicator[collapsed="true"],
+#personal-bookmarks #PlacesToolbar #PlacesToolbarDropIndicator{
+  display: none;
+}
+
+#personal-bookmarks #PlacesToolbar toolbarbutton.bookmark-item{
+  padding-top: 0px !important;
+  padding-bottom: 0px !important;
+  margin-top: 2px !important;
+  margin-bottom: 2px !important;
+  vertical-align: middle;
+}
+
+/********** ioxoi ************
+#personal-bookmarks #PlacesToolbar toolbarseparator{
+  -moz-appearance: none !important;
+  visibility: visible !important;
+  display: inline;
+  text-shadow: none !important;
+  border-left: 3px solid ThreeDShadow !important;
+  border-right: 3px solid ThreeDHighlight !important;
+  vertical-align: middle;
+}
+*/
+
+/* makes the entire bookmarks bar slightly increase in height by adding 1 pixel of space on the top and bottom  
+#personal-bookmarks #PlacesToolbar #PlacesToolbarItems > box {
+    padding: 35px 35px !important;
+}
+*/
+/* 1 pixel space on the left and right side of each bookmark item and make all bookmarks buttons bigger */
+#personal-bookmarks #PlacesToolbar toolbarbutton.bookmark-item {
+    margin: 10px !important;
+    padding: 2px 3px !important;
+}
+
+/* Remove the extra 1 pixel of space added to the left side on the first bookmark item
+#personal-bookmarks #PlacesToolbar toolbarbutton.bookmark-item:first-child {
+    margin: 0 1px 0 0 !important;
+}
+ */
+/* 10 pixels extra space on the left and right side of the seperators and make them 25% opacity */
+#personal-bookmarks #PlacesToolbar toolbarseparator {
+    margin: 0 10px !important;
+/***    opacity: 0.25 !important; /**/
+}
+
+
+
+
+
+
+#personal-bookmarks toolbarbutton.bookmark-item[dragover][open]{
+  -moz-appearance: toolbarbutton;
+}
+
+#navigator-toolbox #PersonalToolbar { 
+/********** ioxoi ************ allow auto hide
+  max-height: calc( var(--bookmark_items_lines) * var(--bookmark_items_height) ) !important;
+*/
+}
+
+/********** ioxoi ************ allow auto hide */
+#navigator-toolbox:hover #PersonalToolbar { 
+  max-height: calc( var(--bookmark_items_lines) * var(--bookmark_items_height) ) !important;
+}
+
+
+
+
+
+
+/********** ioxoi ************ allow auto hide */
+#PersonalToolbar {
+  opacity: 0 !important;
+  transition: all 0.5s ease 0s !important;
+/*  margin-top: -132px !important;*/
+}
+/********** ioxoi ************ allow auto hide */
+#navigator-toolbox:hover #PersonalToolbar {
+  opacity: 1.0 !important;
+  transition-delay: 0s !important;
+  margin-top: inherit !important;
+}
+
+
+
+
+
+
+
+
+
+/********************************************
+
+for debugging - colors added
+
+********************************************/
+
+/*
+
+#navigator-toolbox {
+	background-color: pink !important; 
+}
+
+#PersonalToolbar {
+	opacity: 1.0 !important;
+ 	background-color: orange !important;
+}
+
+#PersonalToolbar:hover {
+ 	background-color: yellow !important;
+}
+
+
+#personal-bookmarks {
+	background-color: skyblue !important;
+}
+#personal-bookmarks:hover {
+	background-color: blue !important;
+}
+
+
+#PlacesToolbar {
+	background-color: lime !important;
+}
+
+#PlacesToolbarItems:hover {
+	background-color: greenyellow !important;
+}
+
+*/
+
+/*
+#navigator-toolbox:hover  {
+	background-color: red !important;
+}
+*/
+
+/*
+#personal-bookmarks #PlacesToolbar {
+ 	background-color: magenta !important;
+}
+#PlacesToolbarItems > .scrollbox-innerbox {
+ 	background-color: magenta !important;
+}
+#navigator-toolbox #PersonalToolbar { 
+ 	background-color: magenta !important;
+}
+*/
