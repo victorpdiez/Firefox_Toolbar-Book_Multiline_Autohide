@@ -30,32 +30,56 @@ IMPORTANT:
 
 
 /*
+
 https://github.com/kakakikikeke/compact-toolbar/blob/master/main.js
+
 */
 
 
+
+
+
 :root {
-/********** ioxoi ************  --bookmark_items_height: 22px; /* <- bookmark items - line height */
+  /********** ioxoi ************  --bookmark_items_height: 22px; /* <- bookmark items - line height */
   --bookmark_items_height: 36px; /* <- bookmark items - line height */
-/********** ioxoi *************   --bookmark_items_lines: 3; /* <- maximum amount of lines */ */
-  --bookmark_items_lines: 8; /* <- maximum amount of lines */
+  /********** ioxoi *************   --bookmark_items_lines: 3; /* <- maximum amount of lines */ */
+  --bookmark_items_lines: 10; /* <- maximum amount of lines */
 }
 
 
 
 #PersonalToolbar {
-/********** ioxoi ************ allow auto hide
+  
+  /********** ioxoi ************ allow auto hide
   min-height: var(--bookmark_items_height) !important;
   max-height: calc(var(--bookmark_items_height)*(var(--bookmark_items_lines))) !important;
-*/
+  /**/
+
+  /********** ioxoi ************ HIDE TOOLBAR whem no hover
   min-height: 0px !important;
   max-height: 0px !important;
+  /**/
+
+  /********** ioxoi ************ 1 line TOOLBAR  whem no hover */
+  min-height: var(--bookmark_items_height) !important;
+  max-height: var(--bookmark_items_height) !important;
+  /**/
+
+/*
+  min-width: var(--bookmark_items_height) !important;
+  max-width: var(--bookmark_items_height) !important;
+*/
+
 }
 
-/********** ioxoi ************ allow auto hide */
-#PersonalToolbar:hover {
+
+
+#PersonalToolbar:hover
+{
+  /********** ioxoi ************ allow auto hide */
   min-height: var(--bookmark_items_height) !important;
   max-height: calc(var(--bookmark_items_height)*(var(--bookmark_items_lines))) !important;
+  /**/
 }
 
 
@@ -76,29 +100,38 @@ https://github.com/kakakikikeke/compact-toolbar/blob/master/main.js
   flex-wrap: wrap; 
   overflow-x: hidden !important;
   overflow-y: visible !important;
-/********** ioxoi ************ allow auto hide
+  /********** ioxoi ************ allow auto hide
   max-height: calc(var(--bookmark_items_height)*(var(--bookmark_items_lines))) !important
-*/
+  /**/
 }
 
-/********** ioxoi ************ allow auto hide */
-#PlacesToolbarItems:hover > .scrollbox-innerbox {
+
+
+#PlacesToolbarItems:hover > .scrollbox-innerbox
+{
+  /********** ioxoi ************ allow auto hide */
   max-height: calc(var(--bookmark_items_height)*(var(--bookmark_items_lines))) !important
+  /**/
 }
+
 
 #personal-bookmarks #PlacesToolbar {
   display: block;
   min-height: 0;
   overflow-x: hidden;
   overflow-y: auto;
-/********** ioxoi ************ allow auto hide
+  /********** ioxoi ************ allow auto hide */
   max-height: calc( var(--bookmark_items_lines) * var(--bookmark_items_height) );
-*/
+  */
 }
 
-/********** ioxoi ************ allow auto hide */
-#personal-bookmarks:hover #PlacesToolbar {
+
+
+#personal-bookmarks:hover #PlacesToolbar
+{
+  /********** ioxoi ************ allow auto hide */
   max-height: calc( var(--bookmark_items_lines) * var(--bookmark_items_height) );
+  /**/
 }
 
 
@@ -171,32 +204,43 @@ https://github.com/kakakikikeke/compact-toolbar/blob/master/main.js
 }
 
 #navigator-toolbox #PersonalToolbar { 
-/********** ioxoi ************ allow auto hide
+  /********** ioxoi ************ allow auto hide
   max-height: calc( var(--bookmark_items_lines) * var(--bookmark_items_height) ) !important;
-*/
-}
-
-/********** ioxoi ************ allow auto hide */
-#navigator-toolbox:hover #PersonalToolbar { 
-  max-height: calc( var(--bookmark_items_lines) * var(--bookmark_items_height) ) !important;
+  /**/
 }
 
 
+#navigator-toolbox:hover #PersonalToolbar
+{ 
+  /********** ioxoi ************ allow auto hide */
+  /*max-height: calc( var(--bookmark_items_lines) * var(--bookmark_items_height) ) !important;
+  /**/
+}
 
 
 
 
-/********** ioxoi ************ allow auto hide */
+
+
+
 #PersonalToolbar {
-  opacity: 0 !important;
+
+  /********** ioxoi ************ allow auto hide */
+  opacity: 0.5 !important;
+  /*opacity: 0 !important;
   transition: all 0.5s ease 0s !important;
-/*  margin-top: -132px !important;*/
+  /**/
+  /*margin-top: -132px !important; /**/
 }
-/********** ioxoi ************ allow auto hide */
+
+
 #navigator-toolbox:hover #PersonalToolbar {
+  /********** ioxoi ************ allow auto hide */
   opacity: 1.0 !important;
+  /*
   transition-delay: 0s !important;
   margin-top: inherit !important;
+  /**/
 }
 
 
@@ -212,13 +256,43 @@ https://github.com/kakakikikeke/compact-toolbar/blob/master/main.js
 for debugging - colors added
 
 ********************************************/
-
 /*
-
 #navigator-toolbox {
 	background-color: pink !important; 
 }
 
+#navigator-toolbox:hover  {
+	background-color: red !important;
+}
+/**/
+
+/*
+#navigator-toolbox #PersonalToolbar { 
+ 	background-color: green !important;
+}
+/**/
+
+/*
+#personal-bookmarks
+{
+	opacity: 1.0 !important;
+	background-color: greenyellow !important;
+}
+#personal-bookmarks:hover
+{
+	opacity: 1.0 !important;
+	background-color: green !important;
+}
+/**/
+
+
+/*******************************
+
+	#PersonalToolbar = #navigator-toolbox #PersonalToolbar
+
+********************************/
+
+/*
 #PersonalToolbar {
 	opacity: 1.0 !important;
  	background-color: orange !important;
@@ -227,16 +301,19 @@ for debugging - colors added
 #PersonalToolbar:hover {
  	background-color: yellow !important;
 }
+/**/
 
-
+/*
 #personal-bookmarks {
 	background-color: skyblue !important;
 }
+
 #personal-bookmarks:hover {
 	background-color: blue !important;
 }
+/**/
 
-
+/*
 #PlacesToolbar {
 	background-color: lime !important;
 }
@@ -244,23 +321,19 @@ for debugging - colors added
 #PlacesToolbarItems:hover {
 	background-color: greenyellow !important;
 }
+/**/
 
-*/
 
-/*
-#navigator-toolbox:hover  {
-	background-color: red !important;
-}
-*/
+
 
 /*
 #personal-bookmarks #PlacesToolbar {
  	background-color: magenta !important;
 }
+/**/
+
+/*
 #PlacesToolbarItems > .scrollbox-innerbox {
- 	background-color: magenta !important;
+ 	background-color: red !important;
 }
-#navigator-toolbox #PersonalToolbar { 
- 	background-color: magenta !important;
-}
-*/
+/**/
