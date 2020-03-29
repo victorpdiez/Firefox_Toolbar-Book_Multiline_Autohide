@@ -74,15 +74,6 @@ https://github.com/kakakikikeke/compact-toolbar/blob/master/main.js
 
 
 
-#PersonalToolbar:hover
-{
-  /********** ioxoi ************ allow auto hide */
-  min-height: var(--bookmark_items_height) !important;
-  max-height: calc(var(--bookmark_items_height)*(var(--bookmark_items_lines))) !important;
-  /**/
-}
-
-
 #personal-bookmarks,
 #PlacesToolbar > hbox {
   display: block;
@@ -95,44 +86,14 @@ https://github.com/kakakikikeke/compact-toolbar/blob/master/main.js
   overflow-y: auto;
 }
 
-#PlacesToolbarItems > .scrollbox-innerbox {
-  display: flex;
-  flex-wrap: wrap; 
-  overflow-x: hidden !important;
-  overflow-y: visible !important;
-  /********** ioxoi ************ allow auto hide
-  max-height: calc(var(--bookmark_items_height)*(var(--bookmark_items_lines))) !important
-  /**/
-}
 
 
 
-#PlacesToolbarItems:hover > .scrollbox-innerbox
-{
-  /********** ioxoi ************ allow auto hide */
-  max-height: calc(var(--bookmark_items_height)*(var(--bookmark_items_lines))) !important
-  /**/
-}
-
-
-#personal-bookmarks #PlacesToolbar {
-  display: block;
-  min-height: 0;
-  overflow-x: hidden;
-  overflow-y: auto;
-  /********** ioxoi ************ allow auto hide */
-  max-height: calc( var(--bookmark_items_lines) * var(--bookmark_items_height) );
-  */
-}
 
 
 
-#personal-bookmarks:hover #PlacesToolbar
-{
-  /********** ioxoi ************ allow auto hide */
-  max-height: calc( var(--bookmark_items_lines) * var(--bookmark_items_height) );
-  /**/
-}
+
+
 
 
 #personal-bookmarks #PlacesToolbar > .bookmark-item{
@@ -172,6 +133,15 @@ https://github.com/kakakikikeke/compact-toolbar/blob/master/main.js
 }
 */
 
+
+
+
+/*************************************************************************************************
+
+	Toolbar icons and folder apparence
+
+*************************************************************************************************/
+
 /* makes the entire bookmarks bar slightly increase in height by adding 1 pixel of space on the top and bottom  
 #personal-bookmarks #PlacesToolbar #PlacesToolbarItems > box {
     padding: 35px 35px !important;
@@ -197,10 +167,67 @@ https://github.com/kakakikikeke/compact-toolbar/blob/master/main.js
 
 
 
-
-
 #personal-bookmarks toolbarbutton.bookmark-item[dragover][open]{
   -moz-appearance: toolbarbutton;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*************************************************************************************************
+
+	Toolbar auto hide
+
+*************************************************************************************************/
+
+#PersonalToolbar {
+
+  /********** ioxoi ************ allow auto hide */
+  transition-delay: 500ms;
+  opacity: 0.5 !important;
+  /*opacity: 0 !important;
+  transition: all 0.5s ease 0s !important;
+  /**/
+  /*margin-top: -132px !important; /**/
+
+}
+
+#PersonalToolbar:hover
+{
+  /********** ioxoi ************ allow auto hide */
+  min-height: var(--bookmark_items_height) !important;
+  max-height: calc(var(--bookmark_items_height)*(var(--bookmark_items_lines))) !important;
+  /**/
+}
+
+
+#personal-bookmarks #PlacesToolbar {
+  display: block;
+  min-height: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+  /********** ioxoi ************ allow auto hide
+  max-height: calc( var(--bookmark_items_lines) * var(--bookmark_items_height) );
+  */
+}
+
+#PlacesToolbarItems > .scrollbox-innerbox {
+  display: flex;
+  flex-wrap: wrap; 
+  overflow-x: hidden !important;
+  overflow-y: visible !important;
+  /********** ioxoi ************ allow auto hide
+  max-height: calc(var(--bookmark_items_height)*(var(--bookmark_items_lines))) !important
+  /**/
 }
 
 #navigator-toolbox #PersonalToolbar { 
@@ -209,43 +236,135 @@ https://github.com/kakakikikeke/compact-toolbar/blob/master/main.js
   /**/
 }
 
-
-#navigator-toolbox:hover #PersonalToolbar
-{ 
-  /********** ioxoi ************ allow auto hide */
-  /*max-height: calc( var(--bookmark_items_lines) * var(--bookmark_items_height) ) !important;
-  /**/
-}
-
-
-
-
-
-
-
-#PersonalToolbar {
-
-  /********** ioxoi ************ allow auto hide */
-  opacity: 0.5 !important;
-  /*opacity: 0 !important;
-  transition: all 0.5s ease 0s !important;
-  /**/
-  /*margin-top: -132px !important; /**/
-}
-
-
 #navigator-toolbox:hover #PersonalToolbar {
   /********** ioxoi ************ allow auto hide */
   opacity: 1.0 !important;
+  transition-delay: 500ms;
   /*
   transition-delay: 0s !important;
   margin-top: inherit !important;
   /**/
+
+  /********** ioxoi ************ allow auto hide */
+  /*max-height: calc( var(--bookmark_items_lines) * var(--bookmark_items_height) ) !important;
+  /**/
+
 }
 
 
 
 
+
+
+#PlacesToolbarItems:hover > .scrollbox-innerbox
+{
+  /********** ioxoi ************ allow auto hide */
+  max-height: calc(var(--bookmark_items_height)*(var(--bookmark_items_lines))) !important
+  /**/
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*************************************************************************************************
+
+ PSOTIONS
+
+*************************************************************************************************/
+
+
+/* bookmarks toolbar */
+#PersonalToolbar { 
+    -moz-box-ordinal-group: 0 !important;
+}
+
+
+/* tab bar */
+/*
+#TabsToolbar { 
+    -moz-box-ordinal-group: 3 !important;
+}
+#navigator-toolbox::after {
+    -moz-box-ordinal-group: 4 !important;
+}
+*/
+
+
+
+/* TABS on bottom - Firefox 65 and later */
+
+/* TABS: height */
+:root {
+  /*--tab-toolbar-navbar-overlap: 0px !important;*/
+  /*--tab-min-height: 55px !important; /**/
+}
+
+/* IMPORTANT: POSITION  */
+:root:not([chromehidden*="toolbar"]) #navigator-toolbox {
+  padding-bottom: calc(var(--tab-min-height) + 1px) !important; /*adjust*/
+}
+
+/* IMPORTANT: POSITION  */
+#TabsToolbar {
+  -moz-box-ordinal-group: 1000 !important;
+  display: block !important;
+  position: absolute !important;
+  bottom: 0 !important;
+  /* width: 100vw !important; */
+}
+
+
+/*
+:root #tabbrowser-tabs {
+  --tab-min-height: 25px !important; 
+  --tab-min-width: 80px !important; 
+}
+*/
+
+/* each tab width */
+#tabbrowser-tabs {
+  width: 100vw !important;
+}
+
+/*
+#tabbrowser-tabs,
+#tabbrowser-tabs > .tabbrowser-arrowscrollbox,
+.tabbrowser-tabs[positionpinnedtabs] > .tabbrowser-tab[pinned] {
+  min-height: var(--tab-min-height) !important;
+  max-height: var(--tab-min-height) !important;
+}
+*/
+
+/*
+#navigator-toolbox toolbar:not(#nav-bar):not(#toolbar-menubar) {
+  -moz-box-ordinal-group: 10 !important;
+}
+*/
+
+
+/* 
+#TabsToolbar {
+
+  height: var(--tab-min-height) !important; 
+  height: 55px !important; 
+  margin-bottom: 1px !important;
+  background-color: var(--toolbar-bgcolor) !important;
+  color: var(--toolbar-color) !important;
+}
+*/
 
 
 
@@ -337,3 +456,26 @@ for debugging - colors added
  	background-color: red !important;
 }
 /**/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
